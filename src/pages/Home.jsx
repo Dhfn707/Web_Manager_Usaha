@@ -1,8 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
+import Button from "../components/Button";
 
 const Home = () => {
+
+  const [color, setColor] = useState("#000000");
+
   return (
-    <div className="w-screen h-screen bg-[url(https://images.pexels.com/photos/27428446/pexels-photo-27428446/free-photo-of-laut-pemandangan-lanskap-lansekap.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500)] bg-no-repeat"></div>
+    <div className="w-screen h-screen flex justify-center items-center ">
+      <input type="color" name="" id="" value={color} onChange={(e)=> setColor(e.target.value)}/>
+      <Button color={color} name="Kirim"/>
+    </div>
   );
 };
 
