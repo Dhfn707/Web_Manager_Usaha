@@ -60,122 +60,117 @@ function Home() {
   }
 
   return (
-    <div className="p-6 bg-gradient-to-b from-blue-800 via-blue-500 to-blue-100 min-h-screen text-white">
-      {/* Header */}
-      <div className="max-w-6xl mx-auto">
-        <h1 className="text-3xl font-bold text-center mb-2">ManagerUsaha</h1>
-        
-        {/* Divider line */}
-        <div className="w-full h-px bg-white bg-opacity-30 mb-6"></div>
+    <div className="min-h-screen bg-gray-50">
+      <div className="max-w-6xl mx-auto p-6">
+        {/* Header */}
+        <div className="text-center mb-8">
+          <h1 className="text-3xl font-bold text-gray-800 mb-2">ManagerUsaha</h1>
+          <p className="text-gray-600">Kelola inventori dengan mudah</p>
+        </div>
         
         {/* Search and Filter Section */}
-        <div className="bg-white bg-opacity-20 backdrop-blur-sm rounded-2xl p-6 mb-6 border border-white border-opacity-30">
-          <h2 className="text-lg font-semibold mb-4 text-center">Pencarian & Filter</h2>
-          
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-4">
+        <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6 mb-6">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
             {/* Search by name */}
-            <div className="relative">
-              <label className="block text-sm font-medium mb-3 opacity-90">Cari Nama Produk</label>
-              <div className="relative">
-                <input
-                  type="text"
-                  placeholder="Masukkan nama produk..."
-                  value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                  className="w-full px-4 py-3 bg-white bg-opacity-90 text-gray-800 placeholder-gray-500 rounded-lg border-2 border-white border-opacity-50 focus:outline-none focus:border-blue-400 focus:bg-opacity-100 transition-all duration-300 shadow-lg"
-                />
-              </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Cari Produk
+              </label>
+              <input
+                type="text"
+                placeholder="Nama produk..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              />
             </div>
 
             {/* Filter by category */}
-            <div className="relative">
-              <label className="block text-sm font-medium mb-3 opacity-90">Filter Kategori</label>
-              <div className="relative">
-                <select
-                  value={selectedCategory}
-                  onChange={(e) => setSelectedCategory(e.target.value)}
-                  className="w-full px-4 py-3 bg-white bg-opacity-90 text-gray-800 rounded-lg border-2 border-white border-opacity-50 focus:outline-none focus:border-blue-400 focus:bg-opacity-100 transition-all duration-300 appearance-none cursor-pointer shadow-lg"
-                >
-                  <option value="" className="bg-white text-gray-800">Semua Kategori</option>
-                  {categories.map(category => (
-                    <option key={category} value={category} className="capitalize bg-white text-gray-800">
-                      {category}
-                    </option>
-                  ))}
-                </select>
-                <div className="absolute right-3 top-1/2 transform -translate-y-1/2 pointer-events-none">
-                  <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
-                  </svg>
-                </div>
-              </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Kategori
+              </label>
+              <select
+                value={selectedCategory}
+                onChange={(e) => setSelectedCategory(e.target.value)}
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              >
+                <option value="">Semua kategori</option>
+                {categories.map(category => (
+                  <option key={category} value={category} className="capitalize">
+                    {category}
+                  </option>
+                ))}
+              </select>
             </div>
 
             {/* Search by barcode */}
-            <div className="relative">
-              <label className="block text-sm font-medium mb-3 opacity-90">Cari Barcode</label>
-              <div className="relative">
-                <input
-                  type="text"
-                  placeholder="Masukkan barcode..."
-                  value={searchBarcode}
-                  onChange={(e) => setSearchBarcode(e.target.value)}
-                  className="w-full px-4 py-3 bg-white bg-opacity-90 text-gray-800 placeholder-gray-500 rounded-lg border-2 border-white border-opacity-50 focus:outline-none focus:border-blue-400 focus:bg-opacity-100 transition-all duration-300 shadow-lg"
-                />
-              </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Barcode
+              </label>
+              <input
+                type="text"
+                placeholder="Scan atau ketik barcode..."
+                value={searchBarcode}
+                onChange={(e) => setSearchBarcode(e.target.value)}
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              />
             </div>
 
             {/* Reset button */}
             <div className="flex items-end">
               <button
                 onClick={resetFilters}
-                className="w-full px-4 py-2 bg-red-500 bg-opacity-80 hover:bg-opacity-100 text-white font-medium rounded-lg transition-all duration-200 hover:scale-105 backdrop-blur-sm"
+                className="w-full px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-md transition-colors"
               >
-                Reset Filter
+                Reset
               </button>
             </div>
           </div>
 
           {/* Search results info */}
-          <div className="text-center text-sm opacity-80">
+          <div className="text-sm text-gray-500 text-center">
             {filteredProducts.length === products.length 
-              ? `Menampilkan semua ${products.length} produk`
-              : `Ditemukan ${filteredProducts.length} dari ${products.length} produk`
+              ? `${products.length} produk`
+              : `${filteredProducts.length} dari ${products.length} produk`
             }
           </div>
         </div>
 
         {/* Products Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-          {filteredProducts.length > 0 ? (
-            filteredProducts.map(product => (
+        {filteredProducts.length > 0 ? (
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            {filteredProducts.map(product => (
               <ProductCard
                 key={product.id}
                 product={product}
                 onClick={() => setSelectedProduct(product)}
               />
-            ))
-          ) : (
-            <div className="col-span-full text-center py-12">
-              <div className="bg-white bg-opacity-20 backdrop-blur-sm rounded-2xl p-8 border border-white border-opacity-30">
-                <div className="text-6xl mb-4 opacity-50">🔍</div>
-                <h3 className="text-xl font-semibold mb-2">Produk Tidak Ditemukan</h3>
-                <p className="opacity-80 mb-4">
-                  Tidak ada produk yang cocok dengan pencarian Anda.
-                </p>
-                <button
-                  onClick={resetFilters}
-                  className="px-6 py-2 bg-blue-500 bg-opacity-80 hover:bg-opacity-100 text-white font-medium rounded-lg transition-all duration-200 hover:scale-105"
-                >
-                  Reset Pencarian
-                </button>
-              </div>
+            ))}
+          </div>
+        ) : (
+          <div className="text-center py-12">
+            <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-8 max-w-md mx-auto">
+              <div className="text-4xl mb-4">📦</div>
+              <h3 className="text-lg font-semibold text-gray-800 mb-2">
+                Produk tidak ditemukan
+              </h3>
+              <p className="text-gray-600 mb-4">
+                Coba ubah kata kunci pencarian atau reset filter
+              </p>
+              <button
+                onClick={resetFilters}
+                className="px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-md transition-colors"
+              >
+                Reset Pencarian
+              </button>
             </div>
-          )}
-        </div>
+          </div>
+        )}
       </div>
 
-      {/* Modal muncul kalau ada produk yang diklik */}
+      {/* Modal */}
       {selectedProduct && (
         <ProductModal
           product={selectedProduct}
