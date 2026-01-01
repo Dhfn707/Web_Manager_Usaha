@@ -6,14 +6,16 @@ function ProductCard({ product, onClick }) {
     >
       <div className="bg-gray-100 h-47 flex items-center justify-center">
         <img
-          src={`http://127.0.0.1:8000/${product.gambar_path}`} 
+          // src={`http://172.18.1.115:8000/${product.gambar_path}`} 
+          // src={`http://127.0.0.1:8000/${product.gambar_path}`} 
+          src={`http://10.215.24.199:8000/${product.gambar_path}`} 
           alt={product.nama}
           className="h-full w-full object-cover"
         />
       </div>
       
       <div className="p-3">
-        <h3 className="font-medium text-gray-800 text-sm mb-1 truncate">
+        <h3 className="font-medium text-blue-800 text-sm mb-1 truncate">
           {product.nama}
         </h3>
         <p className="text-xs text-gray-500 mb-1">
